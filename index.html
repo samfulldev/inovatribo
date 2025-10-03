@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InovaTribo</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <section class="left">
+      <div class="logo">
+        <img src="./logo_cerebro.png" alt="Logo InovaTribo" />
+        <h2>inovaTribo</h2>
+      </div>
+      <h1>Conectando mentes que<br>transformam o futuro</h1>
+      <p>Uma comunidade para cocriação e inovação tecnológica</p>
+      <form class="form" action="/register" method="POST">
+        <input type="email"name="email" placeholder="Digite seu email" />
+        <input type="password" name="password" placeholder="Digite sua senha" />
+        <button type="submit" class="btn-login">Entrar</button>
+        <a href="#" class="forgot">Esqueceu a senha?</a>
+        <button type="button" class="btn-create" onclick="window.location.href='cadastro.html'">Criar nova conta</button>
+      </form>
+    </section>
+    <section class="right">
+      <img  src="./noscomlampada.png" alt="Rede de nós conectados" class="network" />
+      
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
