@@ -45,4 +45,3 @@ app.post('/register', async (req, res) => {
 
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
 
-app.use(bodyParser.urlencoded({ extended: true }));
