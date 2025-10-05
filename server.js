@@ -8,7 +8,8 @@ require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname)); // Serve os arquivos HTML/CSS/JS
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public'))); // Serve os arquivos HTML/CSS/JS
 
 
 // Conexão com o banco de dados usando variáveis de ambiente
@@ -43,7 +44,29 @@ app.post('/register', async (req, res) => {
   }
 });
 
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Erro interno');
+    }
+
+    if (results.length === 0) {
+      return res.status(401).send('Usuário não encontrado');
+    }
+
+    const user = results[0];
+    const match = await bcrypt.compare(password, user.password);
+
+    if (match) {
+      res.sendFile(path.join(__dirname, 'public', 'principal.html'));
+    } else {
+      res.status(401).send('Senha incorreta');
+    }
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
-
-
