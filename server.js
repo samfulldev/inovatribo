@@ -23,50 +23,41 @@ const pool = new Pool({
 });
 
 // Rota de cadastro
+const express = require('express');
+const bcrypt = require('bcrypt');
+const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config();
+const path = require('path');
+
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Conexão com Supabase via client JS
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+
+// Rota de cadastro
 app.post('/register', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).send('Preencha todos os campos');
 
   try {
     const hash = await bcrypt.hash(password, 10);
-    pool.query(
-      'INSERT INTO usuarios (email, senha) VALUES ($1, $2)',
-      [email, hash],
-      (err) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).send('Erro ao cadastrar');
-        }
-        res.send('Cadastro realizado com sucesso!');
-      }
-    );
-  } catch (error) {
+    const { error } = await supabase
+      .from('usuarios')
+      .insert([{ email, senha: hash }]);
+
+    if (error) {
+      console.error(error);
+      return res.status(500).send('Erro ao cadastrar');
+    }
+
+    res.send('Cadastro realizado com sucesso!');
+  } catch (err) {
+    console.error(err);
     res.status(500).send('Erro interno');
   }
-});
-
-app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-
-  pool.query('SELECT * FROM usuarios WHERE email = $1', [email], async (err, result) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send('Erro interno');
-    }
-
-    if (result.rows.length === 0) {
-      return res.status(401).send('Usuário não encontrado');
-    }
-
-    const user = result.rows[0];
-    const match = await bcrypt.compare(password, user.senha);
-
-    if (match) {
-      res.sendFile(path.join(__dirname, 'public', 'principal.html'));
-    } else {
-      res.status(401).send('Senha incorreta');
-    }
-  });
 });
 
 const PORT = process.env.PORT || 3000;
