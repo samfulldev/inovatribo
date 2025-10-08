@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,22 +18,27 @@
       <h1>Conectando mentes que<br>transformam o futuro</h1>
       <p>Uma comunidade para cocriação e inovação tecnológica</p>
 
-    <form class="form" action="/login" method="POST">
-        <input type="email"name="email" placeholder="Digite seu email" />
-        <input type="password" name="password" placeholder="Digite sua senha" />
-        <button type="submit" class="btn-login">Entrar</button>
-        <a href="#" class="forgot">Esqueceu a senha?</a>
+      <h2 id="form-title">Login</h2>
+      <form class="form" id="auth-form">
+        <input type="email" id="email" name="email" placeholder="Digite seu email" required />
+        <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
+        <button type="submit" id="submit-btn" class="btn-login">Entrar</button>
+        <p id="message" style="color: red;"></p>
+        <p id="toggle" style="cursor: pointer; color: blue;">Não tem conta? Cadastre-se</p>
         <button type="button" class="btn-create" onclick="window.location.href='cadastro.html'">Criar nova conta</button>
       </form>
-   </section>
+    </section>
+
     <section class="right">
-      <img  src="./noscomlampada.png" alt="Rede de nós conectados" class="network" />
-      
+      <img src="./noscomlampada.png" alt="Rede de nós conectados" class="network" />
     </section>
   </div>
 
   <script>
-    const supabase = supabase.createClient("https://nlswvewwcewmpaypzbps.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5sc3d2ZXd3Y2V3bXBheXB6YnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MDM4MjUsImV4cCI6MjA3NTI3OTgyNX0.lsWZJOHszJHRYQSM6B2ZRkdHWmHhfNbZO3yRnx93pxo");
+    const supabase = supabase.createClient(
+      "https://nlswvewwcewmpaypzbps.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5sc3d2ZXd3Y2V3bXBheXB6YnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MDM4MjUsImV4cCI6MjA3NTI3OTgyNX0.lsWZJOHszJHRYQSM6B2ZRkdHWmHhfNbZO3yRnx93pxo"
+    );
 
     let isLogin = true;
     const formTitle = document.getElementById("form-title");
@@ -66,7 +70,7 @@
         message.textContent = result.error.message;
       } else {
         message.textContent = "";
-        window.location.href = "/principal.html"; 
+        window.location.href = "/principal.html";
       }
     });
   </script>
