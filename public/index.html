@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InovaTribo</title>
+  <title>Login - Acesso ao Site</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="reset.css" />
   <link rel="stylesheet" href="style-login.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
@@ -16,19 +18,57 @@
       </div>
       <h1>Conectando mentes que<br>transformam o futuro</h1>
       <p>Uma comunidade para cocriação e inovação tecnológica</p>
-      <form class="form" action="/login" method="POST">
+
+    <form class="form" action="/login" method="POST">
         <input type="email"name="email" placeholder="Digite seu email" />
         <input type="password" name="password" placeholder="Digite sua senha" />
         <button type="submit" class="btn-login">Entrar</button>
         <a href="#" class="forgot">Esqueceu a senha?</a>
-        <button type="button" class="btn-create" onclick="window.location.href='cadastro.html'">Criar nova conta</button>
+        <button type="button" class="btn-create" onclick="window.location.href='pagina_login_supabase.html'">Criar nova conta</button>
       </form>
-    </section>
+   </section>
     <section class="right">
       <img  src="./noscomlampada.png" alt="Rede de nós conectados" class="network" />
       
     </section>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    const supabase = supabase.createClient("https://nlswvewwcewmpaypzbps.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5sc3d2ZXd3Y2V3bXBheXB6YnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MDM4MjUsImV4cCI6MjA3NTI3OTgyNX0.lsWZJOHszJHRYQSM6B2ZRkdHWmHhfNbZO3yRnx93pxo");
+
+    let isLogin = true;
+    const formTitle = document.getElementById("form-title");
+    const submitBtn = document.getElementById("submit-btn");
+    const toggle = document.getElementById("toggle");
+    const message = document.getElementById("message");
+
+    toggle.addEventListener("click", () => {
+      isLogin = !isLogin;
+      formTitle.textContent = isLogin ? "Login" : "Cadastro";
+      submitBtn.textContent = isLogin ? "Entrar" : "Cadastrar";
+      toggle.textContent = isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
+      message.textContent = "";
+    });
+
+    document.getElementById("auth-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      let result;
+      if (isLogin) {
+        result = await supabase.auth.signInWithPassword({ email, password });
+      } else {
+        result = await supabase.auth.signUp({ email, password });
+      }
+
+      if (result.error) {
+        message.textContent = result.error.message;
+      } else {
+        message.textContent = "";
+        window.location.href = "principal.html"; // substitua pela URL real do seu site
+      }
+    });
+  </script>
 </body>
 </html>
