@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro - InovaTribo</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,21 +16,29 @@
       <button type="submit">Cadastrar</button>
     </form>
   </div>
-  <script>
-    document.getElementById('cadastroForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+<script>
+  const supabase = supabase.createClient(
+    'https://nlswvewwcewmpaypzbps.supabase.co', // substitua pelo seu URL do Supabase
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5sc3d2ZXd3Y2V3bXBheXB6YnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MDM4MjUsImV4cCI6MjA3NTI3OTgyNX0.lsWZJOHszJHRYQSM6B2ZRkdHWmHhfNbZO3yRnx93pxo'                    // substitua pela sua chave pública
+  );
 
-      const response = await fetch('http://localhost:3000/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
+  document.getElementById('cadastroForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-      const result = await response.text();
-      alert(result);
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password
     });
-  </script>
+
+    if (error) {
+      alert('Erro ao cadastrar: ' + error.message);
+    } else {
+      alert('Cadastro realizado com sucesso!');
+      window.location.href = 'index.html'; // ou principal.html se quiser ir direto
+    }
+  });
+</script>
 </body>
 </html>
