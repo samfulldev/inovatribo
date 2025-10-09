@@ -1,44 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro - InovaTribo</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style-cadastro.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
-    <form class="form" id="cadastroForm">
-      <h2>Crie sua conta</h2>
-      <input type="email" id="email" name="email" placeholder="Digite seu email" required />
-      <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
-      <button type="submit">Cadastrar</button>
-    </form>
+    <section class="left">
+      <div class="logo">
+        <img src="./logo_cerebro.png" alt="Logo InovaTribo" />
+        <h2>inovaTribo</h2>
+      </div>
+      <h1>Crie sua conta</h1>
+      <p>Participe da comunidade e transforme ideias em inovação</p>
+
+      <form id="auth-form">
+        <input type="email" id="email" name="email" placeholder="Digite seu email" required />
+        <input type="password" id="password" name="password" placeholder="Crie uma senha" required />
+        <button type="submit" id="submit-btn" class="btn-create">Cadastrar</button>
+        <p id="message" style="color: red;"></p>
+      </form>
+    </section>
+
+    <section class="right">
+      <img src="./noscomlampada.png" alt="Rede de nós conectados" class="network" />
+    </section>
   </div>
-<script>
-  const supabase = supabase.createClient(
-    'https://nlswvewwcewmpaypzbps.supabase.co', // substitua pelo seu URL do Supabase
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5sc3d2ZXd3Y2V3bXBheXB6YnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MDM4MjUsImV4cCI6MjA3NTI3OTgyNX0.lsWZJOHszJHRYQSM6B2ZRkdHWmHhfNbZO3yRnx93pxo'                    // substitua pela sua chave pública
-  );
 
-  document.getElementById('cadastroForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+  <script>
+    const supabase = supabase.createClient(
+      "https://nlswvewwcewmpaypzbps.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5sc3d2ZXd3Y2V3bXBheXB6YnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MDM4MjUsImV4cCI6MjA3NTI3OTgyNX0.lsWZJOHszJHRYQSM6B2ZRkdHWmHhfNbZO3yRnx93pxo"
+    );
 
-    const { data, error } = await supabase.auth.signUp({
-      email: email,
-      password: password
+    document.getElementById("auth-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const result = await supabase.auth.signUp({ email, password });
+
+      if (result.error) {
+        document.getElementById("message").textContent = result.error.message;
+      } else {
+        document.getElementById("message").textContent = "";
+        window.location.href = "/principal.html";
+      }
     });
-
-    if (error) {
-      alert('Erro ao cadastrar: ' + error.message);
-    } else {
-      alert('Cadastro realizado com sucesso!');
-      window.location.href = 'index.html'; // ou principal.html se quiser ir direto
-    }
-  });
-</script>
+  </script>
 </body>
 </html>
