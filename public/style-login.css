@@ -179,3 +179,14 @@ input::placeholder {
     width: 120px;
   }
 }
+
+a {
+  color: inherit;         /* Herda a cor do elemento pai */
+  text-decoration: none;  /* Remove o sublinhado padrão */
+  font-weight: inherit;   /* Herda o peso da fonte */
+}
+
+a:hover {
+  color: #00ffff;         /* Cor ao passar o mouse (exemplo: azul neon) */
+  text-decoration: underline; /* Ou mantenha sem sublinhado */
+}
