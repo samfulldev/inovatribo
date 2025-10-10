@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Cadastro - InovaTribo</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="reset.css" />
   <link rel="stylesheet" href="style-cadastro.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -30,27 +29,5 @@
       <img src="./noscomlampada.png" alt="Rede de nós conectados" class="network" />
     </section>
   </div>
-
-  <script>
-    const supabase = supabase.createClient(
-      "https://nlswvewwcewmpaypzbps.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5sc3d2ZXd3Y2V3bXBheXB6YnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MDM4MjUsImV4cCI6MjA3NTI3OTgyNX0.lsWZJOHszJHRYQSM6B2ZRkdHWmHhfNbZO3yRnx93pxo"
-    );
-
-    document.getElementById("auth-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      const result = await supabase.auth.signUp({ email, password });
-
-      if (result.error) {
-        document.getElementById("message").textContent = result.error.message;
-      } else {
-        document.getElementById("message").textContent = "";
-        window.location.href = "/principal.html";
-      }
-    });
-  </script>
 </body>
 </html>

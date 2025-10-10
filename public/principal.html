@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Bem-vindo à InovaTribo</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="reset.css" />
   <link rel="stylesheet" href="/style-principal.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -75,28 +74,5 @@
       </section>
     </aside>
   </div>
-
-  <script>
-    const supabase = supabase.createClient(
-      "https://nlswvewwcewmpaypzbps.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5sc3d2ZXd3Y2V3bXBheXB6YnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MDM4MjUsImV4cCI6MjA3NTI3OTgyNX0.lsWZJOHszJHRYQSM6B2ZRkdHWmHhfNbZO3yRnx93pxo"
-    );
-
-    async function carregarUsuario() {
-      const { data, error } = await supabase.auth.getUser();
-      if (error || !data?.user) {
-        window.location.href = "/index.html"; // redireciona se não estiver logado
-      } else {
-        document.getElementById("user-email").textContent = `Usuário: ${data.user.email}`;
-      }
-    }
-
-    document.getElementById("logout-btn").addEventListener("click", async () => {
-      await supabase.auth.signOut();
-      window.location.href = "/index.html";
-    });
-
-    carregarUsuario();
-  </script>
 </body>
 </html>
