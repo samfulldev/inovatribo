@@ -3,220 +3,245 @@
 <head>
   <meta charset="UTF-8" />
   <title>Login - InovaTribo</title>
-  <link rel="stylesheet" href="reset.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-<style>
-  :root {
-  --bg-dark: #000000;
-  --blue-neon: #00bfff;
-  --green-neon: #00ff99;
-  --yellow-btn: #f7e300;
-  --text-white: #ffffff;
-  --text-gray: #cccccc;
-  --font-main: 'Inter', sans-serif;
-}
+  <style>
+    :root {
+      --bg-dark: #000000;
+      --blue-neon: #00bfff;
+      --green-neon: #00ff99;
+      --yellow-btn: #f7e300;
+      --text-white: #ffffff;
+      --text-gray: #cccccc;
+      --font-main: 'Inter', sans-serif;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: var(--font-main);
-  background: var(--bg-dark);
-  color: var(--text-white);
-}
+    body {
+      font-family: var(--font-main);
+      background: var(--bg-dark);
+      color: var(--text-white);
+    }
 
-/* --- Layout principal --- */
-.container {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  min-height: 100vh;
-  align-items: center;
-  padding: 4rem 6%;
-  gap: 2rem;
-}
+    .container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      min-height: 100vh;
+      align-items: center;
+      padding: 4rem 6%;
+      gap: 2rem;
+    }
 
-.left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.8rem;
-  max-width: 480px;
-}
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.8rem;
+      max-width: 480px;
+    }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
 
-.logo img {
-  width: 55px;
-  height: auto;
-}
+    .logo img {
+      width: 55px;
+      height: auto;
+    }
 
-.logo h2 {
-  font-size: 2.3rem;
-  font-weight: 700;
-  color: var(--blue-neon);
-}
+    .logo h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--blue-neon);
+    }
 
-h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--text-white);
-}
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-white);
+    }
 
-p {
-  font-size: 1rem;
-  color: var(--text-gray);
-  max-width: 90%;
-}
+    p {
+      font-size: 1rem;
+      color: var(--text-gray);
+      max-width: 90%;
+    }
 
-/* --- Formulário --- */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  max-width: 320px;
-  margin-top: 0.5rem;
-}
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-width: 320px;
+      margin-top: 0.5rem;
+    }
 
-input {
-  padding: 0.75rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #1c2333;
-  color: var(--text-white);
-  font-size: 0.95rem;
-}
+    input {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #1c2333;
+      color: var(--text-white);
+      font-size: 0.95rem;
+    }
 
-input::placeholder {
-  color: var(--text-gray);
-}
+    input::placeholder {
+      color: var(--text-gray);
+    }
 
-.btn-login {
-  background-color: #007bff;
-  color: white;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: center;
-}
+    .btn-login {
+      background-color: #007bff;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+    }
 
-.btn-login a {
-  color: inherit;
-  text-decoration: none;
-  display: block;
-}
+    .btn-login a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+    }
 
-.btn-create {
-  background-color: var(--yellow-btn);
-  color: black;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-}
+    .btn-create {
+      background-color: var(--yellow-btn);
+      color: black;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-/* --- Imagem lado direito --- */
-.right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
-.network {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  object-fit: contain;
-}
+    .network {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      object-fit: contain;
+      animation: pulse 3s infinite ease-in-out;
+    }
 
-/* --- Responsividade --- */
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: 1fr;
-    padding: 2rem;
-    text-align: center;
-  }
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+      }
+    }
 
-  .left {
-    align-items: center;
-    max-width: 100%;
-  }
+    @media (max-width: 1024px) {
+      .container {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+      }
 
-  .form {
-    align-items: center;
-    width: 100%;
-  }
+      .left {
+        align-items: center;
+        max-width: 100%;
+        order: 1;
+      }
 
-  .form input, 
-  .btn-login, 
-  .btn-create {
-    width: 100%;
-    max-width: 360px;
-  }
+      .right {
+        align-items: center;
+        justify-content: center;
+        order: 2;
+        width: 100%;
+        display: flex;
+        margin-top: 2rem;
+      }
 
-  .right {
-    margin-top: 2rem;
-  }
+      .network {
+        width: 80%;
+        max-width: 360px;
+      }
+    }
 
-  .network {
-    width: 80%;
-    max-width: 360px;
-  }
-}
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+      }
 
-@media (max-width: 600px) {
-  .logo img {
-    width: 40px;
-  }
+      .left, .right {
+        width: 100%;
+        max-width: 100%;
+      }
 
-  .logo h2 {
-    font-size: 1.6rem;
-  }
+      .left {
+        order: 1;
+      }
 
-  h1 {
-    font-size: 1.5rem;
-  }
+      .right {
+        order: 2;
+        justify-content: flex-end;
+        display: flex;
+        margin-top: 1rem;
+      }
 
-  p {
-    font-size: 0.9rem;
-  }
+      .logo img {
+        width: 40px;
+      }
 
-  input,
-  .btn-login,
-  .btn-create {
-    font-size: 0.85rem;
-    padding: 0.6rem;
-  }
+      .logo h2 {
+        font-size: 1.6rem;
+      }
 
-  .network {
-    width: 70%;
-  }
-}
+      h1 {
+        font-size: 1.5rem;
+      }
 
-/* --- Links --- */
-a {
-  color: inherit;
-  text-decoration: none;
-  font-weight: inherit;
-}
+      p {
+        font-size: 0.9rem;
+      }
 
-a:hover {
-  color: #00ffff;
-}
-</style>
+      input,
+      .btn-login,
+      .btn-create {
+        font-size: 0.85rem;
+        padding: 0.6rem;
+      }
+
+      .network {
+        width: 70%;
+        max-width: 280px;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: inherit;
+    }
+
+    a:hover {
+      color: #00ffff;
+    }
+  </style>
 </head>
-
 <body>
   <div class="container">
     <section class="left">
