@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <title>Login - InovaTribo</title>
-  <link rel="stylesheet" href="reset.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-<style>
-  :root {
+:root {
   --bg-dark: #000000;
   --blue-neon: #00bfff;
   --green-neon: #00ff99;
@@ -214,33 +206,3 @@ a {
 a:hover {
   color: #00ffff;
 }
-</style>
-</head>
-
-<body>
-  <div class="container">
-    <section class="left">
-      <div class="logo">
-        <img src="./logo_cerebro.png" alt="Logo InovaTribo" />
-        <h2>inovaTribo</h2>
-      </div>
-      <h1>Conectando mentes que<br>transformam o futuro</h1>
-      <p>Uma comunidade para cocriação e inovação tecnológica</p>
-
-      <h2 id="form-title">Login</h2>
-      <form class="form" id="auth-form">
-        <input type="email" id="email" name="email" placeholder="Digite seu email" required />
-        <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
-        <button type="submit" id="submit-btn" class="btn-login"><a href="https://inovatribo-2.onrender.com/principal.html">Entrar</a></button>
-        <p id="message" style="color: red;"></p>
-        <p id="toggle" style="cursor: pointer; color: blue;">Não tem conta? Cadastre-se</p>
-        <button type="button" class="btn-create" onclick="window.location.href='cadastro.html'">Criar nova conta</button>
-      </form>
-    </section>
-
-    <section class="right">
-      <img src="./noscomlampada.png" alt="Rede de nós conectados" class="network" />
-    </section>
-  </div>
-</body>
-</html>
