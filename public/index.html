@@ -84,14 +84,9 @@
       gap: 0.7rem;
     }
 
-    .input-group {
-      position: relative;
+    input {
       width: 85%;
-    }
-
-    .input-group input {
-      width: 100%;
-      padding: 0.6rem 0.6rem 0.6rem 2.2rem;
+      padding: 0.6rem;
       border: none;
       border-radius: 6px;
       background-color: #1c2333;
@@ -99,16 +94,7 @@
       font-size: 0.85rem;
     }
 
-    .input-group input::placeholder {
-      color: var(--text-gray);
-    }
-
-    .input-group .icon {
-      position: absolute;
-      top: 50%;
-      left: 0.6rem;
-      transform: translateY(-50%);
-      font-size: 1rem;
+    input::placeholder {
       color: var(--text-gray);
     }
 
@@ -122,10 +108,6 @@
       cursor: pointer;
       width: 85%;
       font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
       position: relative;
       overflow: hidden;
     }
@@ -190,30 +172,13 @@
 
     <h2 id="form-title">Login</h2>
     <form class="form" id="auth-form">
-      <div class="input-group">
-        <span class="icon">📧</span>
-        <input type="email" id="email" name="email" placeholder="Digite seu email" required />
-      </div>
-      <div class="input-group">
-        <span class="icon">🔒</span>
-        <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
-      </div>
-      <button type="submit" id="submit-btn" class="btn-login" onclick="playClickSound()">
-        🔐 Entrar
-      </button>
+      <input type="email" id="email" name="email" placeholder="Digite seu email" required />
+      <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
+      <button type="submit" id="submit-btn" class="btn-login">Entrar</button>
       <p id="message"></p>
       <p id="toggle">Não tem conta? Cadastre-se</p>
       <button type="button" class="btn-create" onclick="window.location.href='cadastro.html'">Criar nova conta</button>
     </form>
   </div>
-
-  <!-- Som ao clicar -->
-  <audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e5c9b3d3e.mp3?filename=click-124467.mp3"></audio>
-  <script>
-    function playClickSound() {
-      const sound = document.getElementById("click-sound");
-      sound.play();
-    }
-  </script>
 </body>
 </html>
