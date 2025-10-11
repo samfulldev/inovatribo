@@ -34,11 +34,11 @@
 
     .container {
       width: 100%;
-      max-width: 400px;
+      max-width: 360px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
     }
 
     .logo {
@@ -49,48 +49,49 @@
     }
 
     .logo img {
-      width: 45px;
+      width: 40px;
       height: auto;
     }
 
     .logo h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--blue-neon);
     }
 
     h1 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       line-height: 1.3;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     p.subtitle {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-gray);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     h2#form-title {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
     }
 
     .form {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: 0.7rem;
     }
 
     input {
-      padding: 0.7rem;
+      padding: 0.6rem;
       border: none;
       border-radius: 6px;
       background-color: #1c2333;
       color: var(--text-white);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      width: 100%;
     }
 
     input::placeholder {
@@ -100,11 +101,13 @@
     .btn-login {
       background-color: #007bff;
       color: white;
-      padding: 0.7rem;
+      padding: 0.6rem;
       border: none;
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
+      width: 100%;
+      font-size: 0.85rem;
     }
 
     .btn-login a {
@@ -116,22 +119,24 @@
     .btn-create {
       background-color: var(--yellow-btn);
       color: black;
-      padding: 0.7rem;
+      padding: 0.6rem;
       border: none;
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
+      width: 100%;
+      font-size: 0.85rem;
     }
 
     #toggle {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #00bfff;
       cursor: pointer;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
     }
 
     #message {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: red;
     }
 
