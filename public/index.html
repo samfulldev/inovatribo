@@ -34,7 +34,7 @@
 
     .container {
       width: 100%;
-      max-width: 360px;
+      max-width: 320px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -84,17 +84,31 @@
       gap: 0.7rem;
     }
 
-    input {
-      padding: 0.6rem;
+    .input-group {
+      position: relative;
+      width: 85%;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 0.6rem 0.6rem 0.6rem 2.2rem;
       border: none;
       border-radius: 6px;
       background-color: #1c2333;
       color: var(--text-white);
       font-size: 0.85rem;
-      width: 100%;
     }
 
-    input::placeholder {
+    .input-group input::placeholder {
+      color: var(--text-gray);
+    }
+
+    .input-group .icon {
+      position: absolute;
+      top: 50%;
+      left: 0.6rem;
+      transform: translateY(-50%);
+      font-size: 1rem;
       color: var(--text-gray);
     }
 
@@ -106,14 +120,29 @@
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
-      width: 100%;
+      width: 85%;
       font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .btn-login a {
-      color: inherit;
-      text-decoration: none;
-      display: block;
+    .btn-login::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-login:active::after {
+      left: 100%;
     }
 
     .btn-create {
@@ -124,7 +153,7 @@
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
-      width: 100%;
+      width: 85%;
       font-size: 0.85rem;
     }
 
@@ -138,6 +167,11 @@
     #message {
       font-size: 0.8rem;
       color: red;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     a:hover {
@@ -156,15 +190,30 @@
 
     <h2 id="form-title">Login</h2>
     <form class="form" id="auth-form">
-      <input type="email" id="email" name="email" placeholder="Digite seu email" required />
-      <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
-      <button type="submit" id="submit-btn" class="btn-login">
-        <a href="https://inovatribo-2.onrender.com/principal.html">Entrar</a>
+      <div class="input-group">
+        <span class="icon">📧</span>
+        <input type="email" id="email" name="email" placeholder="Digite seu email" required />
+      </div>
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
+      </div>
+      <button type="submit" id="submit-btn" class="btn-login" onclick="playClickSound()">
+        🔐 Entrar
       </button>
       <p id="message"></p>
       <p id="toggle">Não tem conta? Cadastre-se</p>
       <button type="button" class="btn-create" onclick="window.location.href='cadastro.html'">Criar nova conta</button>
     </form>
   </div>
+
+  <!-- Som ao clicar -->
+  <audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e5c9b3d3e.mp3?filename=click-124467.mp3"></audio>
+  <script>
+    function playClickSound() {
+      const sound = document.getElementById("click-sound");
+      sound.play();
+    }
+  </script>
 </body>
 </html>
